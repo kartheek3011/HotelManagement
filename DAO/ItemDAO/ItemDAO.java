@@ -4,7 +4,7 @@ public class ItemDAO implements IItemDAO {
 
 	private Connection connection; 
 		
-		public UserDAO() throws Exception{
+		public ItemDAO() throws Exception{
 			
 			try {
 				connection = new DbUtil().getConnection();
@@ -41,22 +41,37 @@ public class ItemDAO implements IItemDAO {
 			return null;
 		}
 
+		@Override
+		public Item GetItem(int itemId){
+
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from user where ItemId='"+itemId+"' and Status='"+1+"'");
+
+			Item item = new Item()
+            item.setId(rs.getInt("id"));
+            item.setItemName(rs.getString("itemname"));
+            item.setPrice(resultSet.getDouble("price"));
+            item.setStatus(resultSet.getInt("status"));
+
+            return item
+		} 	
+			
 		//TODO with the return of objects .
 		@Override
-		public List<Item> GetItemList(){
+		public List<Item> GetItemList() {
 
 			try{
 
 				List<Item> itemsList = new ArrayList<Item>();
 				Statement statement = connection.createStatement();
-				ResultSet rs = statement.executeQuery("select * from user where Status='"+1"'");
+				ResultSet rs = statement.executeQuery("select * from item where Status='"+1"'");
 
 				while (rs.next()) {
 				            Item item = new Item()
 				            item.setId(rs.getInt("id"));
 				            item.setItemName(rs.getString("itemname"));
 				            item.setPrice(resultSet.getDouble("price"));
-				            item.setStatus(resultSet.getInt("status"))
+				            item.setStatus(resultSet.getInt("status"));
 				            itemsList.add(item);
 				        }
 				return itemsList
@@ -91,5 +106,5 @@ public class ItemDAO implements IItemDAO {
 		}				
 
 		}
-			
+
 }
