@@ -1,0 +1,61 @@
+
+public void viewmyorder(actionEvent event){
+
+	((Node)event.getSource()).getScene().getWindow().hide();
+	Stage primaryStage = new Stage();
+
+	 Scene scene = new Scene(new Group());
+    stage.setTitle("My Order View");
+    stage.setWidth(450);
+    stage.setHeight(500);
+
+    final Label labelHead1 = new Label("My Order ");
+    labelHead1.setFont(new Font("Arial", 20));
+
+    //TODO fill with table number
+	final Label labelHead2 = new Label("Table Number : " + );
+	labelHead2.setFont(new Font("Arial", 20));
+
+    #TODO just check if table number is required....
+	final Label label1 = new Label("Item Id");
+	label1.setFont(new Font("Arial", 20));
+	
+	final Label label2 = new Label("Item Name");
+	label1.setFont(new Font("Arial", 20));
+	
+	final Label label3 = new Label("Quantity");
+	label3.setFont(new Font("Arial", 20));
+	
+
+	//TODO add it perfectly to the stage
+
+	int i;
+	//For each get the relevant from Order Id
+	GridPane gridpane = new GridPane();
+	for(i=1; i <=  ;i++)
+	{
+	    Label itemid = new Label(" "); //TODO 
+    	itemid.setFont(new Font("Arial", 20));
+    	itemid.setMinWidth(5);
+
+		Label itemname = new Label(" "); //TODO 
+	    itemname.setFont(new Font("Arial", 20));
+    	itemname.setMinWidth(5);
+
+    	//TODO check if we need to add it as textField
+		Label quantity = new Label(" "); //TODO 
+	    quantity.setFont(new Font("Arial", 20));
+    	quantity.setMinWidth(5);
+
+		gridpane.add(orderid, 1, i);
+		gridpane.add(tablenumber, 2, i);
+		gridpane.add(status, 3, i);
+
+	}
+
+
+
+    stage.setScene(scene);
+    stage.show();
+
+}
